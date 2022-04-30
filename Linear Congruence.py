@@ -2,9 +2,9 @@
 # above approach
 
 # Function to generate random numbers
-def multiplicativeCongruentialMethod(Xo, m, a,
-									randomNums,
-									noOfRandomNums):
+def linearCongruentialMethod(Xo, m, a, c,
+							randomNums,
+							noOfRandomNums):
 
 	# Initialize the seed state
 	randomNums[0] = Xo
@@ -14,20 +14,23 @@ def multiplicativeCongruentialMethod(Xo, m, a,
 	for i in range(1, noOfRandomNums):
 		
 		# Follow the linear congruential method
-		randomNums[i] = (randomNums[i - 1] * a) % m
+		randomNums[i] = ((randomNums[i - 1] * a) +
+										c) % m
 
 # Driver Code
 if __name__ == '__main__':
 	
 	# Seed value
 	Xo = 10
-	#r0 
 	
 	# Modulus parameter
 	m = 11
 	
 	# Multiplier term
 	a = 7
+	
+	# Increment term
+	c = 0
 
 	# Number of Random numbers
 	# to be generated
@@ -37,9 +40,9 @@ if __name__ == '__main__':
 	randomNums = [0] * (noOfRandomNums)
 
 	# Function Call
-	multiplicativeCongruentialMethod(Xo, m, a,
-									randomNums,
-									noOfRandomNums)
+	linearCongruentialMethod(Xo, m, a, c,
+							randomNums,
+							noOfRandomNums)
 
 	# Print the generated random numbers
 	for i in randomNums:
